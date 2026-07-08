@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+
+# Environment
+.env
+
+# Database
+chroma_db/
+
+# Uploaded PDFs
+uploads/
+
+# Virtual Environment
+venv/
+.venv/
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

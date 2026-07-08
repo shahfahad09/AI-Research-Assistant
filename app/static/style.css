@@ -1,0 +1,164 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0f172a;
+    color: #e5e7eb;
+}
+
+.layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 280px;
+    background: #020617;
+    padding: 30px;
+    border-right: 1px solid #1e293b;
+}
+
+.sidebar h2 {
+    color: #38bdf8;
+    margin-bottom: 10px;
+}
+
+.sidebar p {
+    color: #94a3b8;
+    line-height: 1.5;
+}
+
+.stat-box {
+    margin-top: 30px;
+    padding: 20px;
+    background: #111827;
+    border-radius: 14px;
+    border: 1px solid #1e293b;
+}
+
+.stat-box span {
+    display: block;
+    color: #94a3b8;
+    margin-bottom: 8px;
+}
+
+.stat-box strong {
+    font-size: 32px;
+    color: #22c55e;
+}
+
+.main-content {
+    flex: 1;
+    padding: 40px;
+}
+
+.hero {
+    margin-bottom: 30px;
+}
+
+.hero h1 {
+    font-size: 44px;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.hero p {
+    color: #94a3b8;
+    font-size: 18px;
+}
+
+.card {
+    background: #111827;
+    border: 1px solid #1e293b;
+    padding: 25px;
+    border-radius: 18px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.card h3 {
+    color: #38bdf8;
+    margin-top: 0;
+}
+
+input[type="file"] {
+    width: 100%;
+    padding: 14px;
+    background: #020617;
+    color: #e5e7eb;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+textarea {
+    width: 100%;
+    min-height: 140px;
+    padding: 15px;
+    background: #020617;
+    color: #e5e7eb;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    font-size: 15px;
+    resize: vertical;
+}
+
+button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 13px 24px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+.danger-btn {
+    margin-top: 20px;
+    width: 100%;
+    background: #dc2626;
+}
+
+.danger-btn:hover {
+    background: #b91c1c;
+}
+
+.success-box {
+    margin-top: 18px;
+    padding: 14px;
+    background: #064e3b;
+    border: 1px solid #10b981;
+    color: #d1fae5;
+    border-radius: 10px;
+}
+
+.answer-card pre {
+    white-space: pre-wrap;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.7;
+    background: #020617;
+    padding: 20px;
+    border-radius: 12px;
+    color: #f8fafc;
+}
+
+.source-card {
+    background: #020617;
+    border-left: 5px solid #38bdf8;
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.source-card p {
+    color: #cbd5e1;
+    line-height: 1.5;
+}

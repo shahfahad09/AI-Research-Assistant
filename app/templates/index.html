@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Research Assistant</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="layout">
+
+    <aside class="sidebar">
+        <h2>AI Research Assistant</h2>
+        <p>RAG-powered research automation prototype.</p>
+
+        <div class="stat-box">
+            <span>Stored Chunks</span>
+            <strong>{{ document_count }}</strong>
+        </div>
+
+        <form action="/clear" method="post">
+            <button class="danger-btn" type="submit">Clear Database</button>
+        </form>
+    </aside>
+
+    <main class="main-content">
+
+        <section class="hero">
+            <h1>AI Research Assistant</h1>
+            <p>Upload research PDFs and ask evidence-based questions with citations.</p>
+        </section>
+
+        <section class="card">
+            <h3>Upload Research PDF</h3>
+
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" accept=".pdf" required>
+                <button type="submit">Upload & Index</button>
+            </form>
+
+            {% if message %}
+            <div class="success-box">{{ message }}</div>
+            {% endif %}
+        </section>
+
+        <section class="card">
+            <h3>Ask Research Question</h3>
+
+            <form action="/ask" method="post">
+                <textarea name="question" placeholder="Example: Summarize the key findings of the uploaded document." required></textarea>
+                <button type="submit">Ask AI</button>
+            </form>
+        </section>
+
+        {% if answer %}
+        <section class="card answer-card">
+            <h3>AI Generated Answer</h3>
+            <pre>{{ answer }}</pre>
+        </section>
+        {% endif %}
+
+        {% if sources %}
+        <section class="card">
+            <h3>Retrieved Sources</h3>
+
+            {% for source in sources %}
+            <div class="source-card">
+                <p><strong>Source:</strong> {{ source.source }}</p>
+                <p><strong>Chunk:</strong> {{ source.chunk_index }}</p>
+                <p>{{ source.text[:700] }}...</p>
+            </div>
+            {% endfor %}
+        </section>
+        {% endif %}
+
+    </main>
+
+</div>
+
+</body>
+</html>
