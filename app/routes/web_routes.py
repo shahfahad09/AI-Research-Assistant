@@ -43,13 +43,17 @@ async def upload_pdf(request: Request, file: UploadFile = File(...)):
     with open(file_path, "wb") as f:
         f.write(await file.read())
 
-    result = process_uploaded_pdf(str(file_path), file.filename)
+    try:
+        result = process_uploaded_pdf(str(file_path), file.filename)
+        message = result["message"]
+    except Exception as e:
+        message = f"Upload failed: {str(e)}"
 
     return templates.TemplateResponse(
         "index.html",
         {
             "request": request,
-            "message": result["message"],
+            "message": message,
             "answer": None,
             "sources": None,
             "document_count": count_documents()
