@@ -46,8 +46,22 @@ async def upload_pdf(request: Request, file: UploadFile = File(...)):
     try:
         result = process_uploaded_pdf(str(file_path), file.filename)
         message = result["message"]
+
     except Exception as e:
-        message = f"Upload failed: {str(e)}"
+        error_text = str(e)
+
+        if (
+            "429" in error_text
+            or "RESOURCE_EXHAUSTED" in error_text
+            or "quota" in error_text.lower()
+        ):
+            message = (
+                "⚠️ Embedding API quota exceeded.\n"
+                "Please wait about one minute and try again.\n"
+                "For larger PDFs, use a paid Gemini API key or reduce the chunk size."
+            )
+        else:
+            message = f"Upload failed: {error_text}"
 
     return templates.TemplateResponse(
         "index.html",
@@ -59,7 +73,6 @@ async def upload_pdf(request: Request, file: UploadFile = File(...)):
             "document_count": count_documents()
         }
     )
-
 
 @router.post("/ask", response_class=HTMLResponse)
 async def ask_question(request: Request, question: str = Form(...)):
